@@ -1,8 +1,7 @@
 import mlflow
-import mlflow.pyfunc
 
 # IMPORTANTE: mismo tracking que train/validate
-mlflow.set_tracking_uri("file:./mlruns")
+mlflow.set_tracking_uri("file:./ruta/mlruns")
 mlflow.set_experiment("ci-cd-mlflow-local")
 
 # obtener último run
@@ -13,6 +12,7 @@ if runs.empty:
 
 run_id = runs.iloc[0]["run_id"]
 
-MODEL_URI = f"runs:/{run_id}/model"
+model_uri = f"runs:/{run_id}/model"
 
-model = mlflow.pyfunc.load_model(MODEL_URI)
+model = mlflow.pyfunc.load_model(model_uri)
+print("Model loaded:", model_uri)

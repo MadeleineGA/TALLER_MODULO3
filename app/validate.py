@@ -8,7 +8,7 @@ import sys
 # -----------------------------
 # MLflow tracking config
 # -----------------------------
-mlflow.set_tracking_uri("file:./mlruns")
+mlflow.set_tracking_uri("file:./ruta/mlruns")
 mlflow.set_experiment("ci-cd-mlflow-local")
 
 THRESHOLD = 5000.0
@@ -38,9 +38,9 @@ if runs.empty:
     sys.exit(1)
 
 run_id = runs.iloc[0]["run_id"]
-model_uri = "runs:/LATEST/model"
 
-print(f"--- Debug: Model URI: {model_uri} ---")
+model_uri = f"runs:/{run_id}/model"
+print("Model URI:", model_uri)
 
 model = mlflow.pyfunc.load_model(model_uri)
 
