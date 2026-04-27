@@ -1,5 +1,18 @@
+import mlflow
 import mlflow.pyfunc
 
-MODEL_PATH = "ruta/mlruns/495601362237022937/models/m-97e2ccdbae4a4a8eb4d835590d556b18/artifacts"
+# IMPORTANTE: mismo tracking que train/validate
+mlflow.set_tracking_uri("file:./ruta/mlruns")
+mlflow.set_experiment("ci-cd-mlflow-local")
 
-model = mlflow.pyfunc.load_model(MODEL_PATH)
+# obtener último run
+runs = mlflow.search_runs(order_by=["start_time DESC"])
+
+if runs.empty:
+    raise ValueError("No hay modelos en MLflow")
+
+run_id = runs.iloc[0]["run_id"]
+
+MODEL_URI = f"runs:/{run_id}/model"
+
+model = mlflow.pyfunc.load_model(MODEL_URI)

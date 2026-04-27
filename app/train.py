@@ -29,7 +29,9 @@ print(f"--- Debug: Desired Artifact Location Base: {artifact_location} ---")
 os.makedirs(mlruns_dir, exist_ok=True)
 
 # --- Configurar MLflow ---
-mlflow.set_tracking_uri(tracking_uri)
+mlflow.set_tracking_uri("file:./ruta/mlruns")
+mlflow.set_experiment("ci-cd-mlflow-local")
+
 
 # --- Crear o Establecer Experimento Explícitamente con Artifact Location ---
 experiment_name = "CI-CD-Lab2"
