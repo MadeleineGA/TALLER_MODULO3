@@ -20,10 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-        pwd
-        ls -R
-        find . -name "requirements.txt"
-        pip install -r TALLER_MODULO3/requirements.txt
+          pwd
+          ls -R
+          find . -name "requirements.txt"
+          pip install -r TALLER_MODULO3/requirements.txt
       - name: Train model
         run: |
           mkdir -p ruta/mlruns
