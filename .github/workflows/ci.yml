@@ -1,29 +1,41 @@
-name: CI - Entrenamiento y Validación de Modelo
+name: CI - Train + API Validation
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 jobs:
-  train-and-validate:
+  pipeline:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Clonar el repositorio
+      - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Configurar Python
+
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-      - name: Instalar dependencias
+          python-version: "3.10"
+
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      - name: Entrenar modelo
+
+      - name: Train model
         run: |
           mkdir -p ruta/mlruns
-          python src/train.py
-      - name: Validar modelo
+          python app/train.py
+
+      - name: Validate model
         run: |
-          python src/validate.py
-      - name: Subir artefactos (tracking local)
+          python app/validate.py
+
+      - name: Test FastAPI import
+        run: |
+          python -c "from app.main import app; print('API OK')"
+
+      - name: Upload MLruns
         uses: actions/upload-artifact@v4
         with:
           name: mlruns

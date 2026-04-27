@@ -1,0 +1,8 @@
+artifact_location: file:C:/Users/madel/OneDrive - COMISION DE REGULACIÓN DE COMUNICACIONES/MADELEINE_GIL/MAESTRIA_EAN/MLOPs/TALLER_MODULO3/ruta/mlruns/495601362237022937
+creation_time: 1777254747177
+experiment_id: '495601362237022937'
+last_update_time: 1777254747177
+lifecycle_stage: active
+name: ci-cd-mlflow-local
+trace_location: null
+workspace: default
