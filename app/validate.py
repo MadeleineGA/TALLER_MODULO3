@@ -9,7 +9,9 @@ THRESHOLD = 5000.0
 
 # --- Dataset ---
 print("--- Debug: Cargando dataset load_diabetes ---")
-X, y = load_diabetes(return_x_y=True, as_frame=True)
+data = load_diabetes(as_frame=True)
+X = data.data
+y = data.target
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
