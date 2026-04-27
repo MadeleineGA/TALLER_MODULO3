@@ -29,7 +29,7 @@ jobs:
           mkdir -p ruta/mlruns
           python app/train.py
 
-      - name: Validate model
+      - name: Validate model (MLflow version)
         run: |
           python app/validate.py
 
