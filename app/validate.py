@@ -38,7 +38,7 @@ if runs.empty:
     sys.exit(1)
 
 run_id = runs.iloc[0]["run_id"]
-model_uri = f"runs:/{run_id}/model"
+model_uri = "runs:/LATEST/model"
 
 print(f"--- Debug: Model URI: {model_uri} ---")
 
