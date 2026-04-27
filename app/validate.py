@@ -5,6 +5,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_diabetes
 import sys
 
+# -----------------------------
+# MLflow tracking config
+# -----------------------------
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_experiment("ci-cd-mlflow-local")
+
 THRESHOLD = 5000.0
 
 # --- Dataset ---

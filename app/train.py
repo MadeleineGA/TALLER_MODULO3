@@ -29,7 +29,7 @@ print(f"--- Debug: Desired Artifact Location Base: {artifact_location} ---")
 os.makedirs(mlruns_dir, exist_ok=True)
 
 # --- Configurar MLflow ---
-mlflow.set_tracking_uri("file:./ruta/mlruns")
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
 mlflow.set_experiment("ci-cd-mlflow-local")
 
 
