@@ -2,7 +2,7 @@ import mlflow
 import mlflow.pyfunc
 
 # IMPORTANTE: mismo tracking que train/validate
-mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("ci-cd-mlflow-local")
 
 # obtener último run

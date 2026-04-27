@@ -8,7 +8,7 @@ import sys
 # -----------------------------
 # MLflow tracking config
 # -----------------------------
-mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("ci-cd-mlflow-local")
 
 THRESHOLD = 5000.0
@@ -28,7 +28,10 @@ print(f"--- Debug: Dimensiones de X_test: {X_test.shape} ---")
 # --- Cargar último modelo desde MLflow ---
 print("--- Debug: Cargando modelo desde MLflow ---")
 
-runs = mlflow.search_runs(order_by=["start_time DESC"])
+mlflow.set_tracking_uri("file:./ruta/mlruns")
+mlflow.set_experiment("ci-cd-mlflow-local")
+
+runs = mlflow.search_runs(experiment_ids=[mlflow.get_experiment_by_name("ci-cd-mlflow-local").experiment_id])
 
 if runs.empty:
     print("--- ERROR: No hay runs en MLflow ---")
