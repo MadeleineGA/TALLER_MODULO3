@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import pandas as pd
-from model import model
+from app.model import model
 
 app = FastAPI()
 
